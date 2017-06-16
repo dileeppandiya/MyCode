@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCode", "MyCode\MyCode.csproj", "{598E0D75-A554-483E-A103-269AA6CC264B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCode.Tests", "MyCode.Tests\MyCode.Tests.csproj", "{FB600BED-5BAB-44FB-902F-CBADBDEF0BE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIPortal", "UIPortal\UIPortal.csproj", "{7C908DA6-691D-4392-8BE4-F66043D55D3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{598E0D75-A554-483E-A103-269AA6CC264B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598E0D75-A554-483E-A103-269AA6CC264B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598E0D75-A554-483E-A103-269AA6CC264B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598E0D75-A554-483E-A103-269AA6CC264B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB600BED-5BAB-44FB-902F-CBADBDEF0BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB600BED-5BAB-44FB-902F-CBADBDEF0BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB600BED-5BAB-44FB-902F-CBADBDEF0BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB600BED-5BAB-44FB-902F-CBADBDEF0BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C908DA6-691D-4392-8BE4-F66043D55D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C908DA6-691D-4392-8BE4-F66043D55D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C908DA6-691D-4392-8BE4-F66043D55D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C908DA6-691D-4392-8BE4-F66043D55D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
