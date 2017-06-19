@@ -1,0 +1,33 @@
+﻿<div ng-controller="ModifyCustomerController as customer" layout="column" layout-padding ng-cloak>
+
+    <br />
+        
+            <label>First Name</label>
+    
+            <input ng-model="customer.user.FirstName" type="text"  placeholder="First Name">
+            <br/>
+            <label>Last Name</label>
+            
+            <input ng-model="customer.user.LastName" type="text" placeholder="Last Name">
+             <br/>
+
+             <input type="button" ng-click="customer.UpdateCustomer()" value="Modify Customer" />
+
+        
+
+      <!-- <md-input-container md-no-float class="md-block">
+            <input ng-model="user.address" type="text" placeholder="Address">
+            <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          
+            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+            <input ng-model="user.BirthDay" type="email" placeholder="Email (required)" ng-required="true">
+        </md-input-container>
+          --> 
+
+        
+
+
+</div>

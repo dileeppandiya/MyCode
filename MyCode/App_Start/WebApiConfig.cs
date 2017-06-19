@@ -1,6 +1,9 @@
 ﻿using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using System.Web.Http.Cors;
+using System.Web.Http.ExceptionHandling;
+using MyCode.Helper;
+using Mycode.Helper;
 
 namespace MyCode
 {
@@ -24,7 +27,11 @@ namespace MyCode
 
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
-            
+
+
+            config.Services.Replace(typeof(IExceptionHandler), new MyExceptionHandler());
+            config.MessageHandlers.Add(new LoggingHandler());
+
         }
     }
 }

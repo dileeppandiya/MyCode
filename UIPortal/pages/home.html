@@ -1,15 +1,18 @@
 ﻿<div class="jumbotron text-center">
     <h1>Home Page</h1>
 
-    <p>{{ vm.test }}</p>
+    
     <input type="button" value="Customer V1.0" ng-click="vm.callApiV1()" />
     <input type="button" value="Customer V2.0" ng-click="vm.callApiV2()" />
+    <input type="button" value="Add Customer" ng-click="vm.ChangeState()" />
 
     <table align="center">
         <tr><td><B>First Name </B></td> <td><B>Last Name</B></td></tr>
         <tr ng-repeat="x in vm.customers track by $index">
             <td>{{ x.FirstName }}</td>
             <td>{{ x.LastName }}</td>
+            <td><input type="button" value="Modify" ng-click="vm.Modify($index)"/></td>
+            <td><input type="button" value="Delete" ng-click="vm.Delete($index)" /></td>
         </tr>
     </table>
     

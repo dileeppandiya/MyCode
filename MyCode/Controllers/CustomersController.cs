@@ -13,11 +13,13 @@ using MyCode.Repo;
 
 namespace MyCode.Controllers
 {
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class CustomersController : ApiController
     {
 
 
-        private CustomerRepo contactRepository; 
+        private CustomerRepo contactRepository;
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
@@ -29,100 +31,85 @@ namespace MyCode.Controllers
         // GET: api/Customers
         public IHttpActionResult GetCustomers()
         {
-            var result  =  contactRepository.getAllCutomers();
+            var result = contactRepository.getAllCutomers();
 
             return Ok(result);
 
         }
 
+        [ResponseType(typeof(Customer))]
+        // GET: api/Customers
+        public IHttpActionResult PostCustomer(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        #region commented Code
-        //// GET: api/Customers/5
-        //[ResponseType(typeof(Customer))]
-        //public IHttpActionResult GetCustomer(int id)
-        //{
-        //    Customer customer = db.Customers.Find(id);
-        //    if (customer == null)
-        //    {
-        //        return NotFound();
-        //    }
+            contactRepository.AddCutomer(customer);
 
-        //    return Ok(customer);
-        //}
+            return Ok();
 
-        //// PUT: api/Customers/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutCustomer(int id, Customer customer)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        }
 
-        //    if (id != customer.Id)
-        //    {
-        //        return BadRequest();
-        //    }
 
-        //    db.Entry(customer).State = EntityState.Modified;
+        [ResponseType(typeof(Customer))]
+        // DELETE: api/Customers/5
+        public IHttpActionResult DeleteCustomer(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!CustomerExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            var result = contactRepository.RemoveCutomer(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
 
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
+            return Ok();
 
-        //// POST: api/Customers
-        //[ResponseType(typeof(Customer))]
-        //public IHttpActionResult PostCustomer(Customer customer)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        }
 
-        //    db.Customers.Add(customer);
-        //    db.SaveChanges();
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutCustomer(int id, Customer customer)
+        {
 
-        //    return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
-        //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != customer.Id)
+            {
+                return BadRequest();
+            }
 
-        //// DELETE: api/Customers/5
-        //[ResponseType(typeof(Customer))]
-        //public IHttpActionResult DeleteCustomer(int id)
-        //{
-        //    Customer customer = db.Customers.Find(id);
-        //    if (customer == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var result = contactRepository.UpdateCustomer(id, customer);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return StatusCode(HttpStatusCode.NoContent);
 
-        //    db.Customers.Remove(customer);
-        //    db.SaveChanges();
+        }
+        
+        
+        // GET: api/Customers/5
+        [ResponseType(typeof(Customer))]
+        public IHttpActionResult GetCustomer(int id)
+        {
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
 
-        //    return Ok(customer);
-        //}
+            return Ok(customer);
+        }
 
-        //private bool CustomerExists(int id)
-        //{
-        //    return db.Customers.Count(e => e.Id == id) > 0;
-        //}
-
-        #endregion
-
+        
+      
 
         protected override void Dispose(bool disposing)
         {

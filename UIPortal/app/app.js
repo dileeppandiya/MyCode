@@ -1,33 +1,35 @@
 ﻿// create the module and name it myApp
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
+var myApp = angular.module('myApp', ['ngRoute']);
 
 // configure our routes
 myApp.config(function ($routeProvider, $httpProvider) {
     $routeProvider
 
-        // route for the home page
         .when('/', {
             templateUrl: 'pages/home.html',
             controller: 'homeController'
         })
 
-        // route for the about page
         .when('/about', {
             templateUrl: 'pages/about.html',
-            controller: 'customerController'
+            controller: 'homeController'
         })
 
-        // route for the contact page
         .when('/contact', {
             templateUrl: 'pages/contact.html',
             controller: 'contactController'
         })
 
-        // route for the contact page
         .when('/AddCustomer', {
             templateUrl: 'pages/AddCustomer.html',
             controller: 'AddCustomerCtrl'
         })
+
+        .when('/ModifyCustomer/:id', {
+             templateUrl: 'pages/ModifyCustomer.html',
+             controller: 'ModifyCustomerController'
+         })
+
     ;
 
     $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
@@ -39,12 +41,3 @@ myApp.controller('contactController', function ($scope) {
     $scope.message = 'Contact us! This is just a demo application';
 });
 
-myApp.controller('AddCustomerCtrl', function ($scope) {
-    $scope.user = {
-        name: 'John Doe',
-        email: '',
-        phone: '',
-        address: 'Mountain View, CA',
-        donation: 19.99
-    };
-});
